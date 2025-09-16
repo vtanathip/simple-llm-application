@@ -1,5 +1,4 @@
 from src.agent.graph import graph
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Dict
@@ -11,8 +10,8 @@ app = FastAPI(
 
 
 class Query(BaseModel):
-    prompt: str
-    model: str = "llama3.2"
+    messages: str
+    city: str
 
 
 class Conversation(BaseModel):

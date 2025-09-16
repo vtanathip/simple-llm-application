@@ -10,7 +10,7 @@
           "PYTHONPATH": "${workspaceFolder}"
       },
       "args": [
-        "src.server.fastapi:app",
+        "src.server.llm_server:app",
         "--reload"
       ],
       "jinja": true,
