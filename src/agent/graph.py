@@ -40,7 +40,10 @@ def agent(state):
     {user_input}
     """)
 
-    city_name = res.content.strip()
+    if isinstance(
+            res.content, str):
+        city_name = res.content.strip()
+
     if not city_name:
         return {"messages": [AIMessage(content="I couldn't find a city name in your question.")]}
 

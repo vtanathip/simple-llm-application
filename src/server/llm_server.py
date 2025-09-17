@@ -1,4 +1,4 @@
-from src.agent.graph import graph
+from src.agent.graph import State, graph
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Dict
@@ -11,18 +11,9 @@ app = FastAPI(
 
 class Query(BaseModel):
     messages: str
-    city: str
-
-
-class Conversation(BaseModel):
-    id: str
-    messages: List[Dict[str, str]] = []
-
-
-conversations: Dict[str, Conversation] = {}
 
 
 @app.post("/generate")
 async def generate_text(query: Query):
-    response: Dict = graph.invoke(query)
+    response: Dict = graph.invoke(State(messages=[query.messages], city=""))
     return {"generated_text": response['messages'][-1]}
