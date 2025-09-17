@@ -9,6 +9,8 @@ services:
     volumes:
       - open-webui:/app/backend/data
     restart: always
+    environment:
+      - GLOBAL_LOG_LEVEL=DEBUG
 
   pipelines:
     image: ghcr.io/open-webui/pipelines:main
@@ -20,6 +22,8 @@ services:
     volumes:
       - pipelines:/app/pipelines
     restart: always
+    environment:
+      - GLOBAL_LOG_LEVEL=DEBUG
 
 volumes:
   open-webui:
